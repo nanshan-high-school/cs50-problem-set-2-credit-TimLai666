@@ -5,6 +5,10 @@ int main() {
   string cardtype;
   long int cardn = 0;
   int card[16];
+  //歸零
+  for ( int i = 0; i < 16; i++ ){
+    card[i] = 0;
+  }
   cout << "請輸入卡號:";  
   cin >> cardn;
   for ( int i = 0; i < 16; i++ ){
@@ -25,12 +29,11 @@ int main() {
   int r = totalc % 10; //餘數
   int cnum = 10 - r; //驗證碼
   if( cnum == card[0] && card[15] / 2 == 4 ){
-    cout << "Visa";
-  } 
-  else if( cnum == card[0] && card[15] / 2 == 5 && card[14] >= 1 || card[14] <= 5 ){
-    cout << "Master card";
+    cardtype = "Visa";
+  }else if( cnum == card[0] && card[15] / 2 == 5 && card[14] >= 1 || card[14] <= 5 ){
+    cardtype = "Master card";
+  }else{
+    cardtype = "偽造卡";
   }
-  else{
-    cout << "偽造卡";
-  }
+  cout << cardtype;
 }
